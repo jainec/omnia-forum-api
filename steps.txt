@@ -11,7 +11,7 @@
 
 - User (id, e-mail, password, name, surname, nickname, profile_pic, biography)
 - Category (id, name, slug)
-- Question (id, description, user_id, category_id, slug)
+- Question (id, description, user_id, category_id)
 - Reply (id, question_id, user_id, description)
 - Like (id, user_id, reply_id)
 - Notification
