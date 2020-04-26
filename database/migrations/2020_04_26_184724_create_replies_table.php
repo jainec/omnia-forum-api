@@ -15,7 +15,11 @@ class CreateRepliesTable extends Migration
     {
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unsigned();
+            $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
+            $table->text('description');
             $table->timestamps();
+            $table->softDeletes();            
         });
     }
 
