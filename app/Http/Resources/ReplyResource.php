@@ -19,6 +19,7 @@ class ReplyResource extends JsonResource
             'description' => $this->description,
             'created_at' => $this->created_at->diffForHumans(),
             'question' => $this->question->description,
+            'number_likes' => $this->likes->count(),
         ];
     }
 }

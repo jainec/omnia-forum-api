@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LikeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('questions', 'QuestionController');
 Route::apiResource('categories', 'CategoryController');
-Route::apiResource('/question/{question}/reply', 'ReplyController');
-Route::apiResource('likes', 'LikeController');
-Route::apiResource('users', 'UserController');
+Route::apiResource('question/{question}/reply', 'ReplyController');
+Route::post('reply/{reply}/like', 'LikeController@likeIt');
+Route::delete('unlike/{like}', 'LikeController@unlikeIt');
+// Route::apiResource('users', 'UserController');
