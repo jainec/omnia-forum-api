@@ -1,0 +1,16 @@
+#Steps:
+
+1) Create migrations, models, factories, controllers
+2) Make the relationships
+3) Make factories and seeding
+4) Make the controllers
+5) JWT authentication
+
+#Database:
+
+- User (id, e-mail, password, name, surname, nickname, profile_pic, biography)
+- Category (id, name)
+- Question (id, description, user_id, category_id)
+- Reply (id, question_id, user_id, description)
+- Like (id, user_id, reply_id)
+- Notification
