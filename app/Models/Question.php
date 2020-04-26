@@ -5,8 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
-{
+{    
     protected $guarded = [];
+
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
+    public function getPathAttribute() {
+        return asset("api/question/$this->slug");
+    }
 
     public function category() {
         return $this->belongsTo('App\Models\Category');
