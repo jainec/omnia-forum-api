@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('JWT');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
