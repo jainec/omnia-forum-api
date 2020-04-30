@@ -1,11 +1,20 @@
-#Steps:
+#Steps API:
 
 1) Create migrations, models, factories, controllers
 2) Make the migrations
 3) Make the models + relationships
 4) Make factories and seeding
 5) Make the controllers (+ routes) (+ resources)
-6) JWT authentication
+6) JWT authentication 
+7) Requests -> validation
+
+#Steps Vue.js:
+
+1) Install Vue.js
+2) Install vue-router
+3) Install vuetify
+4) Make the components
+5) (save token to local storage so the user can refresh page and keep the token)
 
 #Database:
 
