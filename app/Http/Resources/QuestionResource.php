@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Question;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class QuestionResource extends JsonResource
@@ -16,11 +17,13 @@ class QuestionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'question' => $this->description,
+            'description' => $this->description,
             'path' => $this->path,
             'created_at' => $this->created_at->diffForHumans(),
             'user' => $this->user->name,
+            'user_id' => $this->user->id,
             'number_replies' => $this->replies->count(),
+            'category' => $this->category->name,            
         ];
     }
 }

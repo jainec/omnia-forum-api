@@ -5,7 +5,7 @@
 3) Make the models + relationships
 4) Make factories and seeding
 5) Make the controllers (+ routes) (+ resources)
-6) JWT authentication 
+6) JWT authentication (Create SignUp in AuthController, JWT middleware, Exception Handling)
 7) Requests -> validation
 
 #Steps Vue.js:
