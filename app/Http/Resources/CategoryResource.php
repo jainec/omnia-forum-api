@@ -14,9 +14,10 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request)
     {
+        $name = isset($this) ? $this->name : '-';
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'name' => $name,
             'slug' => $this->slug,
             'created_at' => $this->created_at,            
         ];

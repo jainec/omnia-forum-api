@@ -20,7 +20,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return CategoryResource::collection(Category::latest()->get());
+        return CategoryResource::collection(Category::orderBy('name', 'ASC')->get());
     }
 
     /**
@@ -58,7 +58,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Category $category)
-    {
+    {        
         $category->update($request->all());
 
         return response()->json('Category updated!', 200);

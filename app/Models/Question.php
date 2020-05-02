@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class Question extends Model
 {    
-    protected $guarded = [];
+    protected $fillable = ['description', 'slug', 'user_id', 'category_id'];
 
     protected static function boot() {
         parent::boot();
