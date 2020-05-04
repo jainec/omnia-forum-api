@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\LikeEvent;
 use App\Models\Like;
 use App\Models\Reply;
 use Illuminate\Http\Request;
@@ -23,9 +24,11 @@ class LikeController extends Controller
     {
         $like = $reply->likes()->create($request->all());
 
+        broadcast(new LikeEvent($reply->id, 1))->toOthers();
+
         return response()->json([
             'message' => 'Like created!',
-            'reply' => $like,
+            'like' => $like,
         ], 200);
     }
 
@@ -35,9 +38,12 @@ class LikeController extends Controller
      * @param  \App\Models\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function unlikeIt(Like $like)
+    public function unlikeIt(Reply $reply, Request $request)
     {        
-        $like->delete();
+        $reply->likes()->delete($request->all());
+
+        broadcast(new LikeEvent($reply->id, 0))->toOthers();
+
         return response()->json('Like deleted', 200);
     }
 }

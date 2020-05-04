@@ -7,6 +7,8 @@
 5) Make the controllers (+ routes) (+ resources)
 6) JWT authentication (Create SignUp in AuthController, JWT middleware, Exception Handling)
 7) Requests -> validation
+8) Notification system
+9) Pusher
 
 #Steps Vue.js:
 
@@ -15,6 +17,8 @@
 3) Install vuetify
 4) Make the components
 5) (save token to local storage so the user can refresh page and keep the token)
+6) Exception Handling (Token expired, deleting and creating token directly in local storage, incorrect token - changing some letters in the original one in local storage)
+7) Show errors
 
 #Database:
 

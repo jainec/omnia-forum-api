@@ -15,7 +15,11 @@ class Question extends Model
         static::creating(function($question) {
             $question->slug = Str::of($question->description)->slug('-');
         });
-    }
+
+        static::updating(function($question) {
+            $question->slug = Str::of($question->description)->slug('-');
+        });
+    }    
 
     public function getRouteKeyName() {
         return 'slug';
@@ -34,6 +38,6 @@ class Question extends Model
     }
 
     public function replies() {
-        return $this->hasMany('App\Models\Reply');
+        return $this->hasMany('App\Models\Reply')->latest();
     }
 }

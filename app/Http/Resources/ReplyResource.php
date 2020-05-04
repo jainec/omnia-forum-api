@@ -17,10 +17,12 @@ class ReplyResource extends JsonResource
         return [
             'id' => $this->id,
             'user' => $this->user->name,
+            'user_id' => $this->user_id,
             'description' => $this->description,
             'created_at' => $this->created_at->diffForHumans(),
             'question' => $this->question->description,
             'number_likes' => $this->likes->count(),
+            'liked_by_logged_user' => !! $this->likes()->where('user_id', auth()->id())->count(),
         ];
     }
 }

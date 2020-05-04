@@ -23,7 +23,8 @@ class QuestionResource extends JsonResource
             'user' => $this->user->name,
             'user_id' => $this->user->id,
             'number_replies' => $this->replies->count(),
-            'category' => $this->category->name,            
+            'category' => $this->category->name,      
+            'replies' => ReplyResource::collection($this->replies),     
         ];
     }
 }

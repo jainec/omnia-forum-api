@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReplyRequest;
 use App\Http\Resources\ReplyResource;
 use App\Models\Question;
 use App\Models\Reply;
+use App\Notifications\NewReplyNotification;
 use Illuminate\Http\Request;
 
 class ReplyController extends Controller
@@ -31,13 +33,16 @@ class ReplyController extends Controller
      * @return \Illuminate\Http\Response
      */
    
-    public function store(Question $question, Request $request)
+    public function store(Question $question, ReplyRequest $request)
     {
         $reply = $question->replies()->create($request->all());
+        $user = $question->user;
+        if($reply->user_id != $question->user_id)
+            $user->notify(new NewReplyNotification($reply));
 
         return response()->json([
             'message' => 'Reply created!',
-            'reply' => $reply,
+            'reply' => new ReplyResource($reply),
         ], 200);
     }
 
@@ -59,7 +64,7 @@ class ReplyController extends Controller
      * @param  \App\Models\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function update(Question $question, Request $request, Reply $reply)
+    public function update(Question $question, ReplyRequest $request, Reply $reply)
     {
         $reply->update($request->all());
 
